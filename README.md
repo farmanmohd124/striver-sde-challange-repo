@@ -1,1 +1,0 @@
-# striver-sde-challange-repo
