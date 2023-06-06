@@ -1,0 +1,33 @@
+TC = O(longn)
+sc= O(1)
+
+#include <bits/stdc++.h>
+
+// int myPow(int x, int n) {
+//   int ans = 1;
+//   long long nn = n;
+//   if (nn < 0) nn = -1 * nn;
+//   while (nn) {
+//     if (nn % 2) {
+//       ans = ans * x;
+//       nn = nn - 1;
+//     } else {
+//       x = x * x;
+//       nn = nn / 2;
+//     }
+//   }
+// }
+
+int modularExponentiation(int x, int n, int m) {
+	// Write your code here.
+    long long ans =1;
+	long long xx =x;
+	while(n>0){
+		if(n%2){
+			ans =((ans)%m * (xx)%m)%m;
+		}
+		xx = ((xx)%m * (xx)%m)%m;
+		n=n>>1;
+	}
+	return (int)(ans%m);
+}
