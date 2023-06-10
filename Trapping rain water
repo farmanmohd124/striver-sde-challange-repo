@@ -1,0 +1,28 @@
+tc = O(3*n) for running for loop 3 times
+sc =o(2*n) for stroing maxleft , maxright;
+
+#include <bits/stdc++.h> 
+long getTrappedWater(long *arr, int n){
+   
+    vector<long>pre(n);
+    vector<long>post(n);
+    long maxi = 0;
+    for(int i =0 ; i<n ; i++){
+            maxi = max(maxi , arr[i]);
+            pre[i]=maxi;
+       
+
+    }
+    long maxi2 =0;;
+    for(int i = n-1 ; i>=0 ; i--){
+        maxi2 =max(arr[i],maxi2);
+        post[i]=maxi2;
+    }
+     long sum =0;
+     for(int i =0 ; i<n ; i++){
+         sum+=(min(pre[i] , post[i])-arr[i]);
+     }
+  return sum;
+
+
+}
