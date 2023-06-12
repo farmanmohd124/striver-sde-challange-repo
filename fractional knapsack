@@ -1,0 +1,24 @@
+TC = O(N)
+SC= O(1)
+#include <bits/stdc++.h> 
+bool static cmp(pair<int,int>a , pair<int,int>b){
+    return (double)a.second/(double)a.first > (double)b.second/(double)b.first;
+}
+double maximumValue (vector<pair<int, int>>& items, int n, int w)
+{
+    sort(items.begin() , items.end() ,cmp);
+    double ans =0;
+    int rem = w;
+    for(int i =0 ; i< items.size() ; i++){
+       if(items[i].first<=rem){
+           ans+=items[i].second;
+           rem-=items[i].first;
+       }
+       else{
+           ans+= (items[i].second/(double)items[i].first)* (double)rem;
+           
+           break;
+       }
+    }
+    return ans;
+}
