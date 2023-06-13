@@ -1,0 +1,33 @@
+TC = O(2^N) + O(NlogN)
+sc= O(2^N)
+
+#include <bits/stdc++.h> 
+void helper(vector<int>&arr , set<vector<int>>&st , int ind , int n , vector<int>op){
+    if(ind==n){
+        sort(op.begin() , op.end());
+        
+        st.insert(op);
+        
+        return ;
+    }
+
+
+    op.push_back(arr[ind]);
+    helper(arr , st , ind+1 , n , op);
+    op.pop_back();
+     helper(arr , st , ind+1 , n , op);
+
+    
+
+}
+vector<vector<int>> uniqueSubsets(int n, vector<int> &arr)
+{
+    set<vector<int>>st;
+    vector<int>op;
+    helper(arr , st ,0, n , op);
+    vector<vector<int>>ans;
+    for(auto it : st){
+        ans.push_back(it);
+    }
+    return ans;
+}
