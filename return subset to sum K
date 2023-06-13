@@ -1,0 +1,28 @@
+ tc = o(2^n)
+ sc= o(2^n)
+#include <bits/stdc++.h> 
+void helper(vector<int>&arr , vector<vector<int>>&ans, int ind , int n , vector<int>op , int target){
+    if(ind==n){
+        int sum =0 ;
+        for(int i =0 ; i<op.size(); i++){
+            sum+=op[i];
+        }
+        if(sum==target){
+            ans.push_back(op);
+        }
+        return;
+    }
+    op.push_back(arr[ind]);
+    helper(arr , ans ,ind+1 , n , op , target );
+    op.pop_back();
+    helper(arr , ans ,ind+1 , n , op , target );
+}
+vector<vector<int>> findSubsetsThatSumToK(vector<int> arr, int n, int k)
+{
+   vector<vector<int>>ans;
+   vector<int>op;
+   helper(arr , ans ,0, n , op , k);
+   return ans; 
+}
+
+
