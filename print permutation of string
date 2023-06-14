@@ -1,0 +1,18 @@
+TC = O(NlogN)
+SC= O(N)
+
+#include <bits/stdc++.h> 
+vector<string> findPermutations(string &s) {
+    vector<string>ans;
+    sort(s.begin() , s.end());
+    int n = s.size();
+    int m = 1;
+    for(int i=1 ; i<=n ; i++){
+        m*=i;
+    }
+    for(int i = 0 ; i<m ; i++){
+        next_permutation(s.begin(), s.end());
+        ans.push_back(s);
+    }
+    return ans;
+}
