@@ -1,0 +1,30 @@
+TC= O(log(N+M)
+Sc= O(1)
+double multiply(int number , int n){
+  
+  double temp = 1.0;
+  for(int i = 0 ; i<n ; i++){
+    temp*=number;
+  }
+  return (int)temp;
+}
+int NthRoot(int n, int m) {
+  int s =1;
+  int e=m;
+
+  while(s<=e){
+    int mid = s+(e-s)/2;
+   
+    if( pow(mid ,n)==m){
+      return mid;
+    }
+    else if(pow(mid ,n)>m){
+    e=mid-1;
+    }
+    else{
+      s=mid+1;
+    }
+    
+  }
+  return -1;
+}
